@@ -4,68 +4,102 @@ import java.util.Arrays;
 public class leetcode21 {
 
     public static void main(String[] args) {
-        System.out.println(largestTimeFromDigits( new int [] {5,5,5,5} ));
+        System.out.println( largestTimeFromDigits( new int[]{0, 0, 0, 0} ) ); //17:36
     }
 
     public static String largestTimeFromDigits(int[] A) {
 
 
-        ArrayList<Integer> arrayList = new ArrayList<>(  );
-        int [] subarray = new int[4];
-        System.out.println( Arrays.toString( subarray ) );
-        int max = A[0];
-        for (int i = 0 ; i< A.length ; i++){
+        ArrayList<Integer> arrayList = new ArrayList<>();
+//
+//
 
+//
+        int max = -1;
+        boolean isValid = false;
 
-            if (A[i] <= 2  && A[i] >= max && !arrayList.contains( A[i] )){
+        for (int i = 0; i < A.length; i++) {
+
+            if (A[i] <= 2 && A[i] >= max) {
                 max = A[i];
-                arrayList.add( 0 , max );
-                subarray [0] = max;
-            }else {
-
-                return "";
+                isValid = true;
 
 
             }
+
+
         }
-        max = A[0];
-        for (int i = 0 ; i< A.length ; i++){
+        arrayList.add( 0, max );
+
+        if (!isValid) {
 
 
-            if (A[i] <= 3  && A[i] >= max && !arrayList.contains( A[i] )){
+            return "";
+
+        }
+        isValid = false;
+        max = -1;
+        for (int i = 0; i < A.length; i++) {
+
+
+            if (A[i] <= 3 && A[i] >= max && arrayList.get( 0 ) == 2 && !arrayList.contains( A[i] ) || A[i] <= 9 && A[i] >= max && arrayList.get( 0 ) == 1 && !arrayList.contains( A[i] )|| A[i] ==0  && A[i] >= max && arrayList.get( 0 ) == 0) {
                 max = A[i];
-                arrayList.add( 1 , max );
-                subarray [1] = max;
-            }else {
-                System.exit( 1 );
-                return "";
+                isValid = true;
+
+
             }
+
+
         }
-        max = A[0];
-        for (int i = 0 ; i< A.length ; i++){
+        arrayList.add( 1, max );
+        if (!isValid) {
 
 
-            if (A[i] <= 5  && A[i] >= max && !arrayList.contains( A[i] )){
+
+            return "";
+
+        }
+        isValid = false;
+        max = -1;
+        for (int i = 0; i < A.length; i++) {
+
+
+            if (A[i] <= 5 && A[i] >= max && !arrayList.contains( A[i] )|| A[i] ==0  && A[i] >= max && arrayList.get( 1 ) == 0) {
                 max = A[i];
-                arrayList.add( 2 , max );
-                subarray [2] = max;
-            }else {
-                return "";
+                isValid = true;
+
+
             }
+
         }
-        max = A[0];
-        for (int i = 0 ; i< A.length ; i++){
+        arrayList.add( 2, max );
+        if (!isValid) {
 
 
-            if (A[i] <= 9  && A[i] >= max  && !arrayList.contains( A[i] )){
+            return "";
+
+        }
+        isValid = false;
+        max = -1;
+        for (int i = 0; i < A.length; i++) {
+
+//1,2,3,4
+            if (A[i] <= 9 && A[i] >= max && !arrayList.contains( A[i] )|| A[i] ==0  && A[i] >= max && arrayList.get( 1 ) == 0) {
                 max = A[i];
-                arrayList.add( 3 , max );
-                subarray [3] = max;
-            }else {
-                return "";
+                isValid = true;
+
+
             }
+
         }
-        return String.valueOf( arrayList );
+        arrayList.add( 3, max );
+        if (!isValid) {
+
+            return "";
+
+        }
+        System.out.println( Arrays.toString( arrayList.toArray() ) );
+        return arrayList.get( 0 ).toString() + arrayList.get( 1 ).toString() + ":" + arrayList.get( 2 ).toString() + arrayList.get( 3 ).toString();
 
     }
 }
