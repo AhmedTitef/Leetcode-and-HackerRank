@@ -3,7 +3,7 @@ public class leetcode22 {
 
     public static void main(String[] args) {
         leetcode22 leetcode22 = new leetcode22();
-        leetcode22.searchBST( new TreeNode( 0 ) );
+//        leetcode22.searchBST( new TreeNode( 0 ) );
     }
 
      class TreeNode {
