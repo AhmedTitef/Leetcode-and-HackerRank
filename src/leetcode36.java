@@ -9,9 +9,9 @@ class Solution36 {
     public ListNode removeElements(ListNode head, int val) {
 
 
-        while (head != null && head.val == val) { //example like [1,1,1,5] and val is 1, so keep deleting all the 1's by moving pointer to next and next to get garabage collected
+        while (head != null && head.val == val) //example like [1,1,1,5] and val is 1, so keep deleting all the 1's by moving pointer to next and next to get garabage collected
             head = head.next;
-        }
+
         ListNode currentNode = head;
         while (currentNode != null && currentNode.next != null) {
             if (currentNode.next.val == val) {
