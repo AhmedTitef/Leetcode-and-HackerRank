@@ -1,17 +1,18 @@
 package leetcode39;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println( solution.commonChars( new String[]{"cool", "lock", "cook" , } ) );
+        System.out.println( solution.commonChars( new String[]{"cool", "cook", "lock" , } ) );
 
     }
 
-    public List<String> commonChars(String[] A) {
+    public List<String> commonChars1(String[] A) {
 
         String firstString = A[0];
         String secondString = A[1];
@@ -84,5 +85,36 @@ public class Solution {
 
 
         return results;
+    }
+
+
+    public List<String> commonChars(String[] A) {
+        List<String> ans = new ArrayList<>();
+        int[] count = new int[26];
+        Arrays.fill(count, Integer.MAX_VALUE);
+//        System.out.println( Arrays.toString( count ) );
+        for (String str : A) {
+            int[] cnt = new int[26];
+            str.chars().forEach(c -> ++cnt[c - 'a']); // count each char's frequency in string str.
+
+
+            for (int i = 0; i < 26; ++i) {
+                count[i] = Math.min(cnt[i], count[i]);
+
+            } // update minimum frequency.
+
+            System.out.println( str + " " + Arrays.toString( count ) );
+        }
+
+
+        for (char c = 'a'; c <= 'z'; ++c) {
+            System.out.println(c - 'a');
+            while (count[c - 'a']-- > 0) {
+
+                ans.add("" + c);
+            }
+
+        }
+        return ans;
     }
 }
