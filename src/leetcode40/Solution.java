@@ -7,7 +7,7 @@ public class Solution {
     public static void main(String[] args) {
 
         Solution solution = new Solution();
-        int amounts[][] = {{1, 5}, {7, 3}, {3, 5}};
+        int amounts[][] = {{2,8,7} , {7,1,3}, {1,9,5}};
         System.out.println( "Result is : " + solution.maximumWealth( amounts ) );
     }
 
@@ -17,6 +17,7 @@ public class Solution {
         int sum = 0;
         int max = 0;
 
+        System.out.println(accounts.length);
         for (int man = 0; man < accounts.length; man++) {
             for (int bank = 0; bank < accounts[0].length; bank++) {
                 System.out.println( accounts[man][bank] );
@@ -24,11 +25,13 @@ public class Solution {
 
             }
 
-            if (sum >= max) {
+            if (sum >= max) { //17
                 max = sum;
                 sum = 0; // max = 6 , sum = 0
-                System.out.println( "__________" );
+
+                System.out.println( "____MAX____ " +max );
             }
+            sum = 0;
         }
 
 
