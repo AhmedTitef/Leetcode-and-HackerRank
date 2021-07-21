@@ -21,7 +21,7 @@ public class Solution {
         List<String> list = new ArrayList<>(  );
 
 //        list.add(  )
-//        System.out.println(solution.countMatches(  ));
+//        System.out.println(Solution.countMatches(  ));
     }
 
     public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
